@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.nutfreedom.mvcstructure.R;
+import com.example.nutfreedom.mvcstructure.fragment.MainFragment;
 import com.example.nutfreedom.mvcstructure.util.ScreenUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,5 +18,11 @@ public class MainActivity extends AppCompatActivity {
         int screenWidth = ScreenUtils.getInstance().getScreenWidth();
         int screenHeight = ScreenUtils.getInstance().getScreenHeight();
         Toast.makeText(MainActivity.this, "Width = " + screenWidth + " Height = " + screenHeight, Toast.LENGTH_SHORT).show();
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.contentContainer, MainFragment.newInstance(1234))
+                    .commit();
+        }
     }
 }
