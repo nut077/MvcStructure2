@@ -1,5 +1,6 @@
 package com.example.nutfreedom.mvcstructure.activity;
 
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -21,8 +22,15 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.contentContainer, MainFragment.newInstance(1234))
+                    .add(R.id.contentContainer, MainFragment.newInstance(1234), "MainFragment")
                     .commit();
         }
+    }
+
+    @Override
+    public void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        MainFragment fragment = (MainFragment) getSupportFragmentManager().findFragmentByTag("MainFragment");
+        fragment.setHelloText("Woooo Hoooooooo");
     }
 }
