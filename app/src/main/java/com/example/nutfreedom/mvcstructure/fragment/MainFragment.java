@@ -48,13 +48,14 @@ public class MainFragment extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        outState.putString("tvHello", tvHello.getText().toString());
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (savedInstanceState != null) {
-
+            tvHello.setText(savedInstanceState.getString("tvHello"));
         }
     }
 }
